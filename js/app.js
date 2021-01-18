@@ -1,5 +1,7 @@
 'use strict';
+var Item=[];
 var names=[];
+var votes=[];
 var numbers=25;
 var currentCout=0;
 var table=document.getElementById('table-info')
@@ -9,6 +11,8 @@ function Items(name){
     this.timeShown=0;
     this.votes=0;
    names.push(this);
+   votes.push(0)
+   Item.push(name)
 
 };
 new Items('bag.jpg');
@@ -19,18 +23,18 @@ new Items('breakfast.jpg');
 new Items('bubblegum.jpg');
 new Items('chair.jpg');
 new Items('cthulhu.jpg');
-new Items('dog-duck.jpg');
+new Items('dogduck.jpg');
 new Items('dragon.jpg');
 new Items('pen.jpg');
-new Items('pet-sweep.jpg');
+new Items('petsweep.jpg');
 new Items('scissors.jpg');
 new Items('shark.jpg');
 new Items('sweep.png');
 new Items('tauntaun.jpg');
 new Items('unicorn.jpg');
 new Items('usb.gif');
-new Items('water-can.jpg');
-new Items('win-glass.jpg');
+new Items('watercan.jpg');
+new Items('wineglass.jpg');
 var NumberofAttemps=document.getElementById('number-of-attemps-form');
 
 NumberofAttemps.addEventListener('click',number);
@@ -72,15 +76,54 @@ function funs(){
 currentCout++;
 if(currentCout <= numbers){
     if(event.target.id === 'image1'){
-      names[indexNumber[3]].votes++
+      names[indexNumber[3]].votes++;
+      votes[indexNumber[3]]=names[indexNumber[3]].votes;
     } else {
       if (event.target.id === 'image2') {
-        names[indexNumber[4]].votes++
+        names[indexNumber[4]].votes++;
+        votes[indexNumber[4]]=names[indexNumber[4]].votes;
       } else {
-        names[indexNumber[5]].votes++
+        names[indexNumber[5]].votes++;
+        votes[indexNumber[5]]=names[indexNumber[5]].votes;
       }
     }
+    
 runder();
+let mychart= document.getElementById('mychart').getContext('2d');
+let barchart= new Chart(mychart,{
+  type:'bar',
+  data:{
+    labels:Item,
+    datasets:[{
+      label:'Votes',
+      data:votes,
+      backgroundColor:[
+'rgba(183, 20, 0, 0.5)',
+'rgba(183, 142, 0, 0.5)',
+'rgba(183, 235, 0, 0.5)',
+'rgba(183, 235, 183, 0.5)',
+'rgba(183, 235, 3, 1)',
+'rgba(255, 235, 3, 1)',
+'rgba(255, 88, 3, 1)',
+'rgba(255, 88, 102, 1)',
+'rgba(255, 88, 203, 1)',
+'rgba(255, 25, 34, 0.2)',
+'rgba(16, 25, 34, 0.2)',
+'rgba(16, 255, 34, 0.2)',
+'rgba(16, 255, 228, 0.2)',
+'rgba(16, 39, 228, 0.2)',
+'rgba(16, 39, 23, 0.6)',
+'rgba(113, 163, 63, 0.6)',
+'rgba(113, 0, 212, 0.6)',
+'rgba(212, 0, 212, 0.6)',
+'rgba(212, 0, 25, 0.6)',
+'rgba(255, 255, 0, 1)',
+      ],
+    }]
+  },
+
+}
+  );
 
   }else{for (let i = 0; i < names.length; i++) {
     if (names[i].votes!==0) {
