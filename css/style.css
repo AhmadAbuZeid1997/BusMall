@@ -41,5 +41,7 @@ label,input,button{
 table, tr, th, td{
 border: 2px solid #cccccc  ;
 }
-
+#result{
+    text-align: center;
+}
 
