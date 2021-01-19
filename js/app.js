@@ -36,8 +36,8 @@ new Items('unicorn.jpg');
 new Items('usb.gif');
 new Items('watercan.jpg');
 new Items('wineglass.jpg');
-var NumberofAttemps=document.getElementById('number-of-attemps-form');
 
+var NumberofAttemps=document.getElementById('number-of-attemps-form');
 NumberofAttemps.addEventListener('click',number);
 function number(e){
 e.preventDefault();
@@ -90,38 +90,56 @@ if(currentCout <= numbers){
     }
     
 runder();
+localStorage.clear();
+var shown=localStorage.getItem("shown")
+shown=[];
 
+
+var old_name=JSON.stringify(Item)
+localStorage.setItem("name", old_name)
+localStorage.getItem("name")
+
+for (let i = 0; i< names.length; i++) {
+  shown.push(names[i].timeShown);
+  
+}
+
+localStorage.setItem("shown",shown)
+
+localStorage.getItem("votes");
+localStorage.setItem("votes", votes);
 
   }else{
-  var char=document.createElement('button')
-  button.appendChild(char)
-  char.textContent='Results';
+  
      
   image1.removeEventListener('click',funs);
   image2.removeEventListener('click',funs);
   image3.removeEventListener('click',funs);
   }
 }
+var char=document.createElement('button')
+  button.appendChild(char)
+  char.textContent='Results';
   button.addEventListener('click',doit)
   function doit(e){
     e.preventDefault();
   for (let i = 0; i < names.length; i++) {
-    if (names[i].votes!==0) {
-        var itemrow=document.createElement('tr')
-        table.appendChild(itemrow)
-        var itemcell=document.createElement('td')
-        itemrow.appendChild(itemcell)
-        itemcell.textContent=names[i].name
+    if ( localStorage['votes'][i]!=='0') {
+        var itemrow=document.createElement('tr');
+        table.appendChild(itemrow);
+        var itemcell=document.createElement('td');
+        itemrow.appendChild(itemcell);
+        itemcell.textContent=JSON.parse(localStorage['name'])[i];
        
-        var itemcell=document.createElement('td')
-        itemrow.appendChild(itemcell)
-        itemcell.textContent=names[i].timeShown
+        var itemcell=document.createElement('td');
+        itemrow.appendChild(itemcell);
+        itemcell.textContent=localStorage['shown'][i];
         
-        var itemcell=document.createElement('td')
-        itemrow.appendChild(itemcell)
-        itemcell.textContent=names[i].votes
+        var itemcell=document.createElement('td');
+        itemrow.appendChild(itemcell);
+        itemcell.textContent=localStorage['votes'][i];
         
-        var call=(names[i].votes/names[i].timeShown)
+        var call=(localStorage['votes'][i]/localStorage['shown'][i])
         var itemcell=document.createElement('td')
         itemrow.appendChild(itemcell)
         itemcell.textContent=call
@@ -132,10 +150,10 @@ runder();
 let barchart= new Chart(mychart,{
   type:'bar',
   data:{
-    labels:Item,
+    labels:JSON.parse(localStorage['name']),
     datasets:[{
       label:'Votes',
-      data:votes,
+      data:localStorage['votes'],
       backgroundColor:[
 'rgba(183, 20, 0, 0.5)',
 'rgba(183, 142, 0, 0.5)',
@@ -163,4 +181,5 @@ let barchart= new Chart(mychart,{
 
 }
   );
+ 
 }
