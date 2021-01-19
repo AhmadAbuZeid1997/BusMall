@@ -5,6 +5,8 @@ var votes=[];
 var numbers=25;
 var currentCout=0;
 var table=document.getElementById('table-info')
+var button=document.getElementById('results')
+
 function Items(name){
     this.name=name;
     this.path='images/'+name;
@@ -13,7 +15,6 @@ function Items(name){
    names.push(this);
    votes.push(0)
    Item.push(name)
-
 };
 new Items('bag.jpg');
 new Items('banana.jpg');
@@ -89,7 +90,45 @@ if(currentCout <= numbers){
     }
     
 runder();
-let mychart= document.getElementById('mychart').getContext('2d');
+
+
+  }else{
+  var char=document.createElement('button')
+  button.appendChild(char)
+  char.textContent='Results';
+     
+  image1.removeEventListener('click',funs);
+  image2.removeEventListener('click',funs);
+  image3.removeEventListener('click',funs);
+  }
+}
+  button.addEventListener('click',doit)
+  function doit(e){
+    e.preventDefault();
+  for (let i = 0; i < names.length; i++) {
+    if (names[i].votes!==0) {
+        var itemrow=document.createElement('tr')
+        table.appendChild(itemrow)
+        var itemcell=document.createElement('td')
+        itemrow.appendChild(itemcell)
+        itemcell.textContent=names[i].name
+       
+        var itemcell=document.createElement('td')
+        itemrow.appendChild(itemcell)
+        itemcell.textContent=names[i].timeShown
+        
+        var itemcell=document.createElement('td')
+        itemrow.appendChild(itemcell)
+        itemcell.textContent=names[i].votes
+        
+        var call=(names[i].votes/names[i].timeShown)
+        var itemcell=document.createElement('td')
+        itemrow.appendChild(itemcell)
+        itemcell.textContent=call
+      
+    }
+  }
+  let mychart= document.getElementById('mychart').getContext('2d');
 let barchart= new Chart(mychart,{
   type:'bar',
   data:{
@@ -124,33 +163,4 @@ let barchart= new Chart(mychart,{
 
 }
   );
-
-  }else{for (let i = 0; i < names.length; i++) {
-    if (names[i].votes!==0) {
-        var itemrow=document.createElement('tr')
-        table.appendChild(itemrow)
-        var itemcell=document.createElement('td')
-        itemrow.appendChild(itemcell)
-        itemcell.textContent=names[i].name
-       
-        var itemcell=document.createElement('td')
-        itemrow.appendChild(itemcell)
-        itemcell.textContent=names[i].timeShown
-        
-        var itemcell=document.createElement('td')
-        itemrow.appendChild(itemcell)
-        itemcell.textContent=names[i].votes
-        
-        var call=(names[i].votes/names[i].timeShown)
-        var itemcell=document.createElement('td')
-        itemrow.appendChild(itemcell)
-        itemcell.textContent=call
-    }  
-  }
-     
-  image1.removeEventListener('click',funs);
-  image2.removeEventListener('click',funs);
-  image3.removeEventListener('click',funs);
-  }
-
-  }
+}
