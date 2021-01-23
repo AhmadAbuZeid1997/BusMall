@@ -120,6 +120,7 @@ localStorage.setItem("votes", votes);
 var char=document.createElement('button')
   button.appendChild(char)
   char.textContent='Results';
+  char.setAttribute('id','results')
   button.addEventListener('click',doit)
   function doit(e){
     e.preventDefault();
