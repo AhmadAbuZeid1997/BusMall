@@ -1,4 +1,7 @@
 
+body{
+    background-color: #EBECF0;
+}
 #header{
     background-image:linear-gradient(to right, black , white)
 }
@@ -14,6 +17,7 @@ header p{
 header h1{
     color: white;
     font-family:cursive;
+    transform: translateY(10px);
 }
 .head-ti{
     display: inline-block
@@ -21,19 +25,19 @@ header h1{
 #custumer-form{
     text-align: center;
 }
-label,input,button{
-    margin-block: 20px;
-    font-family: cursive;
-}
+
 #image1,#image2,#image3{
     width: 200px;
     height: 200px;
     margin-left: 10%;
+    box-shadow: 10px 10px #80808038;
 }
 #group-images{
     text-align: center;
     margin-bottom: 20px;
     margin-top: 20px;
+    transform: translateY(25%);
+    
 }
 #table{
     text-align: -webkit-center;
@@ -43,5 +47,59 @@ border: 2px solid #cccccc  ;
 }
 #result{
     text-align: center;
+}
+button{
+    transform: translateY(50%);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.2px;
+    border-radius:360px ;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+    padding: 16px;
+    background-color: #EBECF0;
+    text-shadow: 1px 1px 0 #fff;
+    color:#61677C;
+    font-weight: bold;
+    box-shadow: -5px -5px 20px #fff,  5px 5px 20px #abaecc;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+    width: 25%;
+    color: #ae1100;
+}
+button:hover {
+    box-shadow: -2px -2px 5px #fff, 2px 2px 5px #abaecc;
+  }
+  button:active {
+    box-shadow: inset 1px 1px 2px #abaecc, inset -1px -1px 2px #fff;
+  }
+input{
+    border: 0;
+    outline: 0;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.2px;
+    font-size: 16px;
+    border-radius: 320px;
+    padding: 16px;
+    background-color: #EBECF0;
+    text-shadow: 1px 1px 0 #fff;
+    margin-right: 8px;
+    box-shadow: inset 2px 2px 5px #abaecc, inset -5px -5px 10px #fff;
+    width: 25%;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
+}
+input:focus{
+    box-shadow: inset 1px 1px 2px #abaecc, inset -1px -1px 2px #fff;
+}
+#results{
+    transform: translate(200px,100px);
+    
+}
+tbody {
+    background-color: blanchedalmond;
 }
 
